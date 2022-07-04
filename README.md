@@ -31,7 +31,7 @@ https://github.com/dmoltisanti/brace/releases/download/latest/dataset.zip
 
 # Citation
 
-```latex
+```bibtex
 @InProceedings{moltisanti22brace,
 author = "Moltisanti, Davide and Wu, Jinyi and Bo, Dai and Loy, Chen Change",
 title = "BRACE: The Breakdancing Competition Dataset for Dance Motion Synthesis",
@@ -42,4 +42,4 @@ year = "2022"
 
 # Supplementary material video
 
-[[](https://img.youtube.com/vi/IIL7yeALxaQ/0.jpg)](https://www.youtube.com/watch?v=IIL7yeALxaQ)
+[![BRACE - supplementary material](https://img.youtube.com/vi/IIL7yeALxaQ/0.jpg)](http://www.youtube.com/watch?v=IIL7yeALxaQ)
