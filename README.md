@@ -23,11 +23,53 @@ This repository contains the dataset published with the ECCV 2022 paper "**BRACE
 | Avg. sequence duration     | 27.48s       |
 | Avg. segment duration      | 9.45s        |
 
-
-
 # Download
 
-https://github.com/dmoltisanti/brace/releases/download/latest/dataset.zip
+## Keypoints
+
+You can download our keypoints [here](https://github.com/dmoltisanti/brace/releases/download/v1.0/dataset.zip).
+
+Notice that keypoints are split into **segments**, i.e. the shorter clips that compose 
+a sequence (please refer to our paper for more details). 
+We provide code to load these keypoints both as segments or as sequences (see below).
+
+Keypoints are JSON files organised in folders as follows:
+
+```bash
+├── year
+│ ├── video_id
+│ │ ├── video_id_start-end_movement.json
+```
+
+Where `video_id_start-end_movement` denote the corresponding information about the segment. 
+For example `3rIk56dcBTM_1234-1330_powermove.json` indicates:
+- video_id: `3rIk56dcBTM`
+- start: `1234`
+- end: `1330`
+- movement: `powermove`
+
+Start/end are in frames. Movement can be one of `(toprock, footwork, powermove)`. 
+
+## Videos and frames
+
+We used `youtube-dl` to download the videos from YouTube (links are provided in [video_info.csv](https://github.com/dmoltisanti/brace/blob/main/videos_info.csv))
+using 
+
+```bash
+format: bestvideo[ext=mp4],bestaudio[ext=m4a]
+``` 
+
+To extract frames we simply used `ffmpeg` without re-encoding the videos:
+
+```bash
+ffmpeg -i ./videos/{} ./frames/{}/img-%06d.png'.format(video_id)
+```
+
+## Manually annotated keypoints
+
+https://github.com/dmoltisanti/brace/releases/download/mk_v1.0/manual_keypoints.zip
+
+# Pytorch dataset
 
 # Citation
 
