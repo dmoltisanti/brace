@@ -159,20 +159,29 @@ class BraceDataset(Dataset):
         return clip, clip_id, video_id
 
 
+def filter_set(sequences_df, set_df):
+
+    pass
+
+
 if __name__ == '__main__':
-    sequences_path_ = Path('../dataset')
+    # adjust csv paths if you don't run this script from its folder
+
+    sequences_path_ = Path('../dataset')  # path where you download and unzipped the keypoints
     df_ = pd.read_csv(Path('../annotations/sequences.csv'))
 
     train_df = pd.read_csv('../annotations/sequences_train.csv')
     train_df = df_[df_.uid.isin(train_df.uid)]
 
-    test_df = pd.read_csv('../annotations/sequences_test.csv')
-    test_df = df_[df_.uid.isin(test_df.uid)]
-
     brace_train = BraceDataset(sequences_path_, train_df)
+    print(f'Loaded BRACE training set! We got {len(brace_train)} training sequences')
     skeletons_train, metadata_train = brace_train.__getitem__(0)
     print(metadata_train)
 
+    test_df = pd.read_csv('../annotations/sequences_test.csv')
+    test_df = df_[df_.uid.isin(test_df.uid)]
+
     brace_test = BraceDataset(sequences_path_, test_df)
+    print(f'Loaded BRACE test set! We got {len(brace_train)} testing sequences')
     skeletons_test, metadata_test = brace_test.__getitem__(0)
     print(metadata_test)
