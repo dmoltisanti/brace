@@ -1,5 +1,8 @@
 # Introduction
 
+![BRACE](figures/pipeline.png)
+
+
 This repository contains the dataset published with the ECCV 2022 paper 
 "**BRACE: The Breakdancing Competition Dataset for Dance Motion Synthesis**".
 
@@ -24,8 +27,10 @@ This repository contains the dataset published with the ECCV 2022 paper
 | Avg. sequence duration     | 27.48s       |
 | Avg. segment duration      | 9.45s        |
 
+### Video
+
 You can watch our [supplementary video](http://www.youtube.com/watch?v=IIL7yeALxaQ) to 
-have a quick look at BRACE. 
+have a quick look at BRACE and our paper. 
 
 # Download
 
