@@ -128,6 +128,7 @@ This file annotates segments, i.e. the shorter dance units a sequence is compose
 - `dancer`: name of the dancer
 - `dancer_id`: numerical ID of the dancer
 - `year`: year of the competition/video
+- `uid`: unique ID of the segment
 
 ## `sequences.csv`
 
@@ -143,7 +144,7 @@ The file contains the following columns:
 - `dancer`: name of the dancer
 - `dancer_id`: numerical ID of the dancer
 - `year`: year of the competition/video
-- `uid`: the unique ID of the sequence
+- `uid`: unique ID of the sequence
 
 Note that there may be gaps between the indicated 
 start/end times (i.e. missing frames). 
@@ -159,7 +160,7 @@ They contain two columns to uniquely identify a training or testing sequence:
 
 - `video_id`: YouTube video ID
 - `seq_idx`: index of the sequence, relative to the video
-- `uid`: the unique ID of the sequence
+- `uid`: unique ID of the sequence
 
 ## `shot_boundaries.json`
 
