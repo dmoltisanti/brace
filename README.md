@@ -108,6 +108,7 @@ We extracted features using
 - onset beat
 - tempogram
 
+Sampling rate for these was set to 15360.
 Please refer to 
 [Dance Revolution](https://github.com/stonyhu/DanceRevolution/) for more details.
 Files are organised as follows:
@@ -134,6 +135,7 @@ features.files
 
 Each of these is a numpy array, which you can access like you
 query a dictionary, e.g. `features['mfcc']`. 
+Each array is 2D with shape `(feature_dim, temporal_dim)`.
 
 ## Videos and frames
 
@@ -153,7 +155,7 @@ ffmpeg -i ./videos/{} ./frames/{}/img-%06d.png'.format(video_id)
 
 # Annotations
 
-You will find our annotation under the folder `annotations` in this repo. 
+You will find our annotations under the folder `annotations` in this repo. 
 Here we provide the details of each file.
 
 ## `segments.csv`
@@ -203,6 +205,19 @@ They contain two columns to uniquely identify a training or testing sequence:
 - `video_id`: YouTube video ID
 - `seq_idx`: index of the sequence, relative to the video
 - `uid`: unique ID of the sequence
+
+## `audio_beats.json`
+
+This JSON file contains the sequences' audio beat information, extracted with
+[Essentia](https://essentia.upf.edu/reference/std_RhythmExtractor2013.html).
+Information is organised as a dictionary where keys are sequences `uid` (see above).
+Each key indexes a dictionary containing:
+
+- `bpm`: the beat per minute of the audio track
+- `beats_confidence`: the confidence of Essentia's beat extractor algorithm
+- `beats_sec`: list of beat positions, in seconds
+- `beats_frame`: list of beat positions, in frames
+
 
 ## `shot_boundaries.json`
 
