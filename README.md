@@ -2,7 +2,6 @@
 
 ![BRACE](figures/pipeline.png)
 
-
 This repository contains the dataset published with the ECCV 2022 paper 
 "**BRACE: The Breakdancing Competition Dataset for Dance Motion Synthesis**".
 
@@ -30,7 +29,7 @@ This repository contains the dataset published with the ECCV 2022 paper
 ### Video
 
 You can watch our [supplementary video](http://www.youtube.com/watch?v=IIL7yeALxaQ) to 
-have a quick look at BRACE and our paper. 
+have a look at BRACE and our paper. 
 
 # Download
 
@@ -61,14 +60,13 @@ For example `3rIk56dcBTM_1234-1330_powermove.json` indicates:
 Start/end are in frames. Movement can be one of `(toprock, footwork, powermove)`. 
 
 The content of the JSON files is
-a dictionary where keys are frame IDs and values are another dictionary. 
-Frame Ids are in the format `video_id/img-xxxxxx.png`, 
+a dictionary where keys are frame IDs in the format `video_id/img-xxxxxx.png`, 
 where `xxxxxx` is the 6 digit (0 padded if necessary) frame number. Each frame ID indexes a dictionary with
 two values: `box` and `keypoints`. `box` is a 5-element list containing the coordinates of the dancer 
-bounding box, in the format `(x, y, w, h, score)`. `keypoints` is a 17-element containing the 
+bounding box, in the format `(x, y, w, h, score)`. `keypoints` is a 17-element list containing the 
 human joints coordinates in the format `(x, y, score)`. 
 The order of the keypoints follows [COCO](https://cocodataset.org)'s format. 
-All coordinates are in pixel (area: 1920x1080) and all `score` values are ` 
+All coordinates are in pixel (area: 1920x1080) and all `score` values are 1
 (we kept them for compatibilities with other libraries).
 
 ## Manually annotated keypoints
@@ -91,13 +89,15 @@ keypoints = np.load('path_to_npz_file')['coco_joints2d'][:, :2]
 ```
 
 `keypoints` will then be a numpy array of shape (17, 2) containing the annotated nodes coordinates.
-These are also in pixel and follow the COCO format just like the segment keypoints.
+These are also in pixel and follow the COCO format just like the segment keypoints. 
+Notice that arrays actually have shape (17, 3), however the last column axis `[:, 2]` is not meaningful.
+Make sure you load these files as suggested with the snippet above to load arrays correctly.
 
 ## Videos and frames
 
 We used `youtube-dl` to download the videos from YouTube 
 (links are provided in [video_info.csv](https://github.com/dmoltisanti/brace/blob/main/videos_info.csv))
-using 
+using: 
 
 ```bash
 format: bestvideo[ext=mp4],bestaudio[ext=m4a]
@@ -112,7 +112,7 @@ ffmpeg -i ./videos/{} ./frames/{}/img-%06d.png'.format(video_id)
 # Annotations
 
 You will find our annotation under the folder `annotations` in this repo. 
-Here we provide the details of each file
+Here we provide the details of each file.
 
 ## `segments.csv`
 
@@ -182,7 +182,7 @@ You can use this file as follows (see also the `__main__` function there):
 ```python
     import pandas as pd
     from pathlib import Path
-    # adjust csv paths if you don't run this script from its folder
+    # adjust csv paths if you don't run this script from the `utils` folder
 
     sequences_path_ = Path('../dataset')  # path where you download and unzipped the keypoints
     df_ = pd.read_csv(Path('../annotations/sequences.csv'))
