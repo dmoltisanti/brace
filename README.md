@@ -44,7 +44,7 @@ We provide Pytorch code to load these segments keypoints as sequences (see below
 
 Keypoints are JSON files organised in folders as follows:
 
-```bash
+```
 ├── year
 │ ├── video_id
 │ │ ├── video_id_start-end_movement.json
@@ -75,7 +75,7 @@ You can find the 26,676 manually annotated keypoints
 [here](https://github.com/dmoltisanti/brace/releases/download/mk_v1.0/manual_keypoints.zip).
 These are provided as numpy arrays (`npz` files) organised in a similar structure as the interpolated keypoints:
 
-```bash
+```
 ├── year
 │ ├── video_id
 │ │ ├── img-xxxxxx.npz
@@ -92,6 +92,48 @@ keypoints = np.load('path_to_npz_file')['coco_joints2d'][:, :2]
 These are also in pixel and follow the COCO format just like the segment keypoints. 
 Notice that arrays actually have shape (17, 3), however the last column axis `[:, 2]` is not meaningful.
 Make sure you load these files as suggested with the snippet above to load arrays correctly.
+
+## Audio features for sequences
+
+You can download pre-extracted audio features for audio sequences
+[here](https://github.com/dmoltisanti/brace/releases/download/af_v1.0/audio_features.zip).
+We extracted features using 
+[Dance Revolution](https://github.com/stonyhu/DanceRevolution/blob/3d85c0a687f150684b4b09caa4452aa0048377f9/prepro.py#L35)
+'s code. Specifically, we extract the following:
+
+- mel frequency cepstral coefficients (MFCC)
+- MFCC delta
+- constant-Q chromagram
+- onset envelope 
+- onset beat
+- tempogram
+
+Please refer to 
+[Dance Revolution](https://github.com/stonyhu/DanceRevolution/) for more details.
+Files are organised as follows:
+
+```
+├── video_id
+│ ├── video_id.sequence_idx.npz
+```
+
+Where `video_id.sequence_idx` corresponds to the sequence `uid` (see annotations below).
+Features are saved as numpy files, which you can load as follows:
+
+```python
+import numpy as np
+features = np.load('path_to_feature_file.npz')
+```
+
+`features.files` contains the 6 audio features listed above:
+
+```bash
+features.files
+['mfcc', 'mfcc_delta', 'chroma_cqt', 'onset_env', 'onset_beat', 'tempogram']
+```
+
+Each of these is a numpy array, which you can access like you
+query a dictionary, e.g. `features['mfcc']`. 
 
 ## Videos and frames
 
@@ -169,10 +211,6 @@ we detected with [Scene Detect](https://pyscenedetect.readthedocs.io/en/latest/)
 This file is a dictionary where keys are YouTube video IDs and values are lists of
 frame indices where shot changes were detected.
 
-# Audio features
-
-Coming soon!
-
 # Pytorch dataset
 
 We prepared a Python script that loads BRACE as a PyTorch dataset. 
@@ -199,6 +237,11 @@ You can use this file as follows (see also the `__main__` function there):
     brace_test = BraceDataset(sequences_path_, test_df)
     skeletons_test, metadata_test = brace_test.__getitem__(0)
 ```
+
+# Help
+
+If you need help with BRACE, just create a [new issue](https://github.com/dmoltisanti/brace/issues/new/choose)
+in this repository.
 
 # Citation
 
