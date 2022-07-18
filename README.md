@@ -95,8 +95,11 @@ Make sure you load these files as suggested with the snippet above to load array
 
 ## Audio features for sequences
 
-You can download pre-extracted audio features for audio sequences
+You can download pre-extracted audio features
 [here](https://github.com/dmoltisanti/brace/releases/download/af_v1.0/audio_features.zip).
+The audio files for these features were obtained trimming the videos' full audio
+following the sequences' start and end times.
+
 We extracted features using 
 [Dance Revolution](https://github.com/stonyhu/DanceRevolution/blob/3d85c0a687f150684b4b09caa4452aa0048377f9/prepro.py#L35)
 's code. Specifically, we extract the following:
@@ -218,6 +221,8 @@ Each key indexes a dictionary containing:
 - `beats_sec`: list of beat positions, in seconds
 - `beats_frame`: list of beat positions, in frames
 
+Like audio features, beats info is relative to audio sequences 
+(i.e. the video audio trimmed using the annotated sequence start/end times).
 
 ## `shot_boundaries.json`
 
