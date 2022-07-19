@@ -153,8 +153,10 @@ format: bestvideo[ext=mp4],bestaudio[ext=m4a]
 To extract frames we simply used `ffmpeg` without re-encoding the videos:
 
 ```bash
-ffmpeg -i ./videos/{} ./frames/{}/img-%06d.png'.format(video_id)
+ffmpeg -i ./path_to_videos/${video_id}.mp4 ./path_to_frames/${video_id}/img-%06d.png
 ```
+
+Where `video_id` is the YouTube video ID.
 
 # Annotations
 
@@ -269,7 +271,7 @@ Please cite our paper if you use BRACE:
 
 ```bibtex
 @InProceedings{moltisanti22brace,
-author = "Moltisanti, Davide and Wu, Jinyi and Bo, Dai and Loy, Chen Change",
+author = "Moltisanti, Davide and Wu, Jinyi and Dai, Bo and Loy, Chen Change",
 title = "BRACE: The Breakdancing Competition Dataset for Dance Motion Synthesis",
 booktitle = "European Conference on Computer Vision (ECCV)",
 year = "2022"
