@@ -277,3 +277,18 @@ booktitle = "European Conference on Computer Vision (ECCV)",
 year = "2022"
 }
 ```
+
+# Authors
+
+- Davide Moltisanti*. University of Edinburgh (work done while at Nanyang Technological University)
+- Jinyi Wu*. S-Lab, Nanyang Technological University
+- Bo Dai. Shanghai AI Laboratory (work done while at Nanyang Technological University)
+- Chen Change Loy. S-Lab, Nanyang Technological University
+
+*Equal contribution:
+
+- Davide worked on the dataset acquisition pipeline and compilation, paper writing and synthesis baselines. 
+- Jinyi proposed to create BRACE from Red Bull BC One videos, was in charge of manual annotations, worked on
+synthesis and pose estimation baselines. He also helped reviewing the paper.
+
+ 
