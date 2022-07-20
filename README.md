@@ -28,7 +28,7 @@ This repository contains the dataset published with the ECCV 2022 paper
 
 ### Video
 
-You can watch our [supplementary video](https://youtu.be/oMBY-HjE7Cg) to 
+You can watch our [supplementary video](https://youtu.be/-5N6uBDfMoM) to 
 have a look at BRACE and our paper. 
 
 # Download
