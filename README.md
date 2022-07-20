@@ -117,8 +117,9 @@ Please refer to
 Files are organised as follows:
 
 ```
-├── video_id
-│ ├── video_id.sequence_idx.npz
+├── year
+│ ├── video_id
+│ │ ├── video_id.sequence_idx.npz
 ```
 
 Where `video_id.sequence_idx` corresponds to the sequence `uid` (see annotations below).
@@ -270,11 +271,11 @@ in this repository.
 Please cite our paper if you use BRACE:
 
 ```bibtex
-@InProceedings{moltisanti22brace,
-author = "Moltisanti, Davide and Wu, Jinyi and Dai, Bo and Loy, Chen Change",
-title = "BRACE: The Breakdancing Competition Dataset for Dance Motion Synthesis",
-booktitle = "European Conference on Computer Vision (ECCV)",
-year = "2022"
+@article{moltisanti22brace,
+author = {Moltisanti, Davide and Wu, Jinyi and Dai, Bo and Loy, Chen Change},
+title = {{BRACE: The Breakdancing Competition Dataset for Dance Motion Synthesis}},
+journal = {European Conference on Computer Vision (ECCV)},
+year = {2022}
 }
 ```
 
