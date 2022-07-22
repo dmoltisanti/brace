@@ -26,6 +26,10 @@ This repository contains the dataset published with the ECCV 2022 paper
 | Avg. sequence duration     | 27.48s       |
 | Avg. segment duration      | 9.45s        |
 
+### Paper
+
+You can read our paper [on arXiv](https://arxiv.org/abs/2207.10120).
+
 ### Video
 
 You can watch our [supplementary video](https://youtu.be/-5N6uBDfMoM) to 
