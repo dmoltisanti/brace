@@ -182,6 +182,6 @@ if __name__ == '__main__':
     test_df = df_[df_.uid.isin(test_df.uid)]
 
     brace_test = BraceDataset(sequences_path_, test_df)
-    print(f'Loaded BRACE test set! We got {len(brace_train)} testing sequences')
+    print(f'Loaded BRACE test set! We got {len(brace_test)} testing sequences')
     skeletons_test, metadata_test = brace_test.__getitem__(0)
     print(metadata_test)
